@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>FirstApp 뉴스 비서</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="container mt-5">
+    <div class="text-center mb-5">
+        <h1>👤 누구의 뉴스 창을 열까요?</h1>
+        <p class="text-muted">Spring Boot로 만든 AI 뉴스 큐레이터입니다.</p>
+    </div>
+    <hr>
+    
+    <div class="card mt-4 shadow-sm">
+        <div class="card-body">
+            <h5 class="card-title">🤖 AI 주방장에게 테스트 질문하기</h5>
+            
+            <form action="/ask" method="post">
+                <div class="input-group mb-3">
+                    <input type="text" name="prompt" class="form-control" placeholder="예: 구글 제미나이가 뭐야? 한 줄로 설명해줘." required>
+                    <button class="btn btn-success" type="submit">물어보기 🚀</button>
+                </div>
+            </form>
+
+            <div th:if="${response != null}" class="alert alert-info mt-3" style="word-break: break-all;">
+                <strong>💡 질문:</strong> <span th:text="${userPrompt}"></span> <br><br>
+                <strong>🤖 답변:</strong>
+                <p th:text="${response}"></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
